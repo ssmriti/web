@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+<table border="1px">
+<tr><th >Name</th>
+<th>Roll No</th>
+<th>Marks</th>
+</tr>
+<tbody ng:repeat="i in names | orderBy:'name'">
+        <tr><td>{{i.name}}</td><td>{{i.roll}}</td><td>{{i.marks}}</td></tr>
+       
+    </tbody>
+</table>
+<br>
+Name: <input type="text" ng-model="nm"/>
+Roll No: <input type="text" ng-model="rollno"/>
+Marks: <input type="text" ng-model="mark"/>
+<button type="button" ng-click="add()">Add</button>
+</div>
+<script>
+var app=angular.module("App",[]);
+app.controller("ctrl",function($scope){
+$scope.names=[{name:"amrita",roll:"cs81",marks:"90"}];
+$scope.add=function(){
+	var obj={name:$scope.nm,roll:$scope.rollno,marks:$scope.mark};
+	$scope.names.push(obj);
+	$scope.names.sort(name);
+	
+}
+});
+</script>
+</body>
+</html>

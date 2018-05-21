@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+<form name="theForm" action="">
+Name:<input type="text" name="name" ng-model="name" required/>
+<span ng-show="theForm.name.$error.required">Name is required</span>
+<br>
+Email:<input type="text" name="email" ng-model="email" required/>
+<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+  <span ng-show="myForm.email.$error.required">Email is required.</span>
+  <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+  </span>
+<br>
+
+Username:<input type="text" name="user" ng-model="uname" required/>
+<span ng-show="theForm.user.$error.required">Username is required</span>
+<br>
+Password:<input type="password" name="pass" ng-model="upass" required/>
+<span ng-show="theForm.pass.$error.required">Password required</span><br>
+
+<button type="button" ng-click="check()">Register</button>
+<p>{{text}}</p>
+</form></div>
+<script>
+var app=angular.module("App",[]);
+app.controller("ctrl",function($scope){
+	$scope.name="name";
+	$scope.upass="password";
+	$scope.email="email";
+	$scope.uname="username";
+	$scope.check=function(){
+		$scope.text="";
+		if($scope.upass!=$scope.cupass)
+			$scope.text="passwords don't match";
+		else
+			$scope.text="successfull";
+	}
+});
+</script>
+</body>
+</html>
